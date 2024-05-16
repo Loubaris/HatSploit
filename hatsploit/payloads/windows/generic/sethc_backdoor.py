@@ -16,7 +16,7 @@ class HatSploitPayload(Payload):
                 'Loubaris - payload developer',
             ],
             'Description': "Replaces sethc.exe with cmd.exe for backdoor access.",
-            'Arch': ARCH_GENERIC,
+            'Arch': ARCH_POWERSHELL,
             'Platform': OS_WINDOWS,
             'Rank': "low",
             'Type': "one_side",
