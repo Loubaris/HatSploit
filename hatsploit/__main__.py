@@ -29,13 +29,11 @@ import yaml
 
 from hatasm import HatAsm
 from typing import Any, Optional
+from badges import Badges, Tables
 
 from pex.platform.types import EXEC_FORMATS
 
 from hatsploit.core.base.console import Console
-
-from hatsploit.core.cli.badges import Badges
-from hatsploit.core.cli.tables import Tables
 
 from hatsploit.core.db.db import DB
 from hatsploit.core.db.builder import Builder
@@ -48,6 +46,7 @@ from hatsploit.lib.config import Config
 from hatsploit.lib.jobs import Jobs
 from hatsploit.lib.runtime import Runtime
 from hatsploit.lib.payloads import Payloads
+from hatsploit.lib.encoders import Encoders
 from hatsploit.lib.show import Show
 
 
@@ -328,6 +327,7 @@ class HatSploitGen(HatSploit):
 
         self.hatasm = HatAsm()
         self.payloads = Payloads()
+        self.encoders = Encoders()
 
         self.show = Show()
 
@@ -464,9 +464,11 @@ class HatSploitGen(HatSploit):
                 query += '/' + args.arch
 
             if args.payloads:
-                self.show.show_search_payloads(query)
+                self.show.show_search_payloads(
+                    self.payloads.get_payloads(), query)
             elif args.encoders:
-                self.show.show_search_encoders(query)
+                self.show.show_search_encoders(
+                    self.encoders.get_encoders(), query)
 
         elif args.formats:
             if not args.platform:

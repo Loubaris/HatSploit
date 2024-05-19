@@ -22,9 +22,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-from hatsploit.core.cli.badges import Badges
-from hatsploit.core.cli.tables import Tables
-from hatsploit.core.cli.tools import Tools
+from badges import Badges, Tables
+
+from hatsploit.core.utils.tools import Tools
 
 
 class Plugin(Badges, Tables, Tools):

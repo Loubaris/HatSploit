@@ -26,9 +26,8 @@ import os
 import random
 
 from colorscript import ColorScript
+from badges import Badges
 
-from hatsploit.core.cli.badges import Badges
-from hatsploit.core.cli.colors import Colors
 from hatsploit.lib.config import Config
 
 
@@ -44,7 +43,6 @@ class Banner(object):
 
         self.config = Config()
         self.badges = Badges()
-        self.colors = Colors()
 
         self.color_script = ColorScript()
 
@@ -70,7 +68,9 @@ class Banner(object):
                         self.config.path_config['banners_path'] + banners[random_banner]
                     )
 
+                self.badges.set_less(False)
                 self.badges.print_empty(f"%newline%end{banner}%end%newline")
+                self.badges.set_less(True)
             else:
                 self.badges.print_warning("No banners detected.")
         else:
